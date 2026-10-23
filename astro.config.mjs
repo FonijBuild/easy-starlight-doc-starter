@@ -7,15 +7,33 @@ export default defineConfig({
   site: "https://fonijbuild.github.io/easy-starlight-docs-starter",
   integrations: [
     starlight({
-      title: "My Docs",
+      // If you need to customize the title for each locale,
+      // else just use: title: 'Your Title'
+      title: {
+        en: "My Docs",
+        fa: "مستندات من",
+      },
       logo: {
         src: "./src/assets/yourlogo.svg",
-        // if your logo has the title, uncomment below line
+        // Uncomment below line if your logo has the title inside
         // replacesTitle: true,
 
-        // if you have separate dark/light logo
+        // In case you have separate dark/light logo
         // light: './src/assets/light-logo.svg',
         // dark: './src/assets/dark-logo.svg',
+      },
+      // Set English as the default language for this site.
+      defaultLocale: "en",
+      locales: {
+        // English docs in `src/content/docs/en/`
+        en: {
+          label: "English",
+        },
+        // Persian docs in `src/content/docs/fa/`
+        fa: {
+          label: "فارسی",
+          dir: "rtl",
+        },
       },
       social: [
         {
