@@ -24,18 +24,19 @@ export default defineConfig({
       },
       favicon: "/images/favicon.svg",
       // Set English as the default language for this site.
-      defaultLocale: "en",
+      defaultLocale: "root",
       locales: {
-        // English docs in `src/content/docs/en/`
-        en: {
+        root: {
           label: "English",
+          lang: "en",
         },
-        // Persian docs in `src/content/docs/fa/`
         fa: {
           label: "فارسی",
+          lang: "fa",
           dir: "rtl",
         },
       },
+      customCss: ["./src/styles/custom.css"],
       // Override default component here
       components: {
         Footer: "./src/components/starlight/Footer.astro",
