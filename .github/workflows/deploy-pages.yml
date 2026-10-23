@@ -26,11 +26,6 @@ jobs:
         with:
           node-version: 24
           package-manager: pnpm@12.14.0
-        env:
-          DOCS_TITLE: ${{ vars.DOCS_TITLE }}
-          DOCS_DESCRIPTION: ${{ vars.DOCS_DESCRIPTION }}
-          SITE_URL: ${{ vars.SITE_URL }}
-          BASE_PATH: ${{ vars.BASE_PATH }}
 
   deploy:
     needs: build
@@ -38,6 +33,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

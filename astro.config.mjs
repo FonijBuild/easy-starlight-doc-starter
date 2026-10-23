@@ -1,10 +1,45 @@
 // @ts-check
+import { existsSync, readFileSync } from "node:fs";
+
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 
+const repository = process.env.GITHUB_REPOSITORY;
+const repositoryOwner = process.env.GITHUB_REPOSITORY_OWNER;
+const repositoryName = repository?.split("/")[1];
+
+const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+
+const isRootPagesRepository =
+  repositoryOwner &&
+  repositoryName &&
+  repositoryName.toLowerCase() === `${repositoryOwner.toLowerCase()}.github.io`;
+
+const customDomain = getCustomDomain();
+
+const site = customDomain
+  ? `https://${customDomain}`
+  : isGitHubActions && repositoryOwner
+    ? `https://${repositoryOwner.toLowerCase()}.github.io`
+    : undefined;
+
+const base =
+  customDomain || isRootPagesRepository
+    ? "/"
+    : isGitHubActions && repositoryName
+      ? `/${repositoryName}`
+      : "/";
+
+const githubUrl = repository
+  ? `${process.env.GITHUB_SERVER_URL ?? "https://github.com"}/${repository}`
+  : undefined;
+
+const editBaseUrl = githubUrl ? `${githubUrl}/edit/main/` : undefined;
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://fonijbuild.github.io/easy-starlight-docs-starter",
+  ...(site ? { site } : {}),
+  base,
   integrations: [
     starlight({
       // If you need to customize the title for each locale,
@@ -13,6 +48,8 @@ export default defineConfig({
         en: "Easy Docs",
         fa: "مستندات آسان",
       },
+      description:
+        "Astro Starlight foundation for Markdown-first documentation and knowledge sites.",
       logo: {
         src: "./src/assets/yourlogo.svg",
         // Uncomment below line if your logo has the title inside
@@ -36,24 +73,51 @@ export default defineConfig({
           dir: "rtl",
         },
       },
+
       customCss: ["./src/styles/custom.css"],
       // Override default component here
       components: {
         Footer: "./src/components/starlight/Footer.astro",
         ThemeSelect: "./src/components/starlight/ThemeToggle.astro",
       },
-      social: [
-        {
-          icon: "github",
-          label: "GitHub",
-          href: "https://github.com/FonijBuild/easy-starlight-docs-starter",
-        },
-        {
-          icon: "linkedin",
-          label: "Linkedin",
-          href: "https://www.linkedin.com/company/fonijbuild",
-        },
-      ],
+
+      ...(githubUrl
+        ? {
+            social: [
+              {
+                icon: "github",
+                label: "GitHub repository",
+                href: githubUrl,
+              },
+            ],
+          }
+        : {}),
+
+      ...(editBaseUrl
+        ? {
+            editLink: {
+              baseUrl: editBaseUrl,
+            },
+          }
+        : {}),
     }),
   ],
 });
+
+function getCustomDomain() {
+  const cnamePath = new URL("./public/CNAME", import.meta.url);
+
+  if (!existsSync(cnamePath)) {
+    return undefined;
+  }
+
+  const value = readFileSync(cnamePath, "utf8").trim();
+
+  return value || undefined;
+}
+
+function withBase(pathname) {
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+
+  return base === "/" ? path : `${base}${path}`;
+}
