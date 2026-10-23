@@ -1,0 +1,36 @@
+---
+import DefaultFooter from '@astrojs/starlight/components/Footer.astro';
+---
+
+<DefaultFooter>
+  <slot />
+</DefaultFooter>
+
+<div class="fonij-credit not-content">
+  <span>Powered by</span>
+  <a href="https://github.com/FonijBuild" rel="noopener noreferrer">FonijBuild</a>
+</div>
+
+<style>
+  .fonij-credit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-block: 1.5rem 0.5rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+
+  .fonij-credit a {
+    color: var(--sl-color-text-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .fonij-credit a:hover {
+    text-decoration: underline;
+  }
+</style>
