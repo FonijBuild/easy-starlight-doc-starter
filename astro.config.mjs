@@ -10,8 +10,8 @@ export default defineConfig({
       // If you need to customize the title for each locale,
       // else just use: title: 'Your Title'
       title: {
-        en: "My Docs",
-        fa: "مستندات من",
+        en: "Easy Docs",
+        fa: "مستندات آسان",
       },
       logo: {
         src: "./src/assets/yourlogo.svg",
@@ -35,24 +35,21 @@ export default defineConfig({
           dir: "rtl",
         },
       },
+      // Override default component here
+      components: {
+        Footer: "./src/components/starlight/Footer.astro",
+        ThemeSelect: "./src/components/starlight/ThemeToggle.astro",
+      },
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/withastro/starlight",
-        },
-      ],
-      sidebar: [
-        {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
-          ],
+          href: "https://github.com/FonijBuild/easy-starlight-docs-starter",
         },
         {
-          label: "Reference",
-          items: [{ autogenerate: { directory: "reference" } }],
+          icon: "linkedin",
+          label: "Linkedin",
+          href: "https://www.linkedin.com/company/fonijbuild",
         },
       ],
     }),
