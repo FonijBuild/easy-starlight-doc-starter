@@ -22,6 +22,7 @@ export default defineConfig({
         // light: './src/assets/light-logo.svg',
         // dark: './src/assets/dark-logo.svg',
       },
+      favicon: "/images/favicon.svg",
       // Set English as the default language for this site.
       defaultLocale: "en",
       locales: {
