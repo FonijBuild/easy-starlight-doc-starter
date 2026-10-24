@@ -11,13 +11,13 @@ sidebar:
 
 پیکربندی Astro می‌تواند از متغیرهای اختیاری زیر استفاده کند:
 
-| متغیر | کاربرد | مقدار پیش‌فرض |
-| --- | --- | --- |
-| `DOCS_TITLE` | عنوان سایت | `Project Docs` |
-| `DOCS_DESCRIPTION` | توضیحات پیش‌فرض سایت | توضیحات starter |
+| متغیر                   | کاربرد                                               | مقدار پیش‌فرض                                      |
+| ----------------------- | ---------------------------------------------------- | -------------------------------------------------- |
+| `DOCS_TITLE`            | عنوان سایت                                           | `Project Docs`                                     |
+| `DOCS_DESCRIPTION`      | توضیحات پیش‌فرض سایت                                 | توضیحات starter                                    |
 | `GITHUB_REPOSITORY_URL` | لینک repository برای buildهای محلی یا خارج از GitHub | در GitHub Actions به‌صورت خودکار تشخیص داده می‌شود |
-| `SITE_URL` | origin اصلی سایت | در GitHub Pages به‌صورت خودکار تشخیص داده می‌شود |
-| `BASE_PATH` | پیشوند مسیر URL | در GitHub Pages به‌صورت خودکار تشخیص داده می‌شود |
+| `SITE_URL`              | origin اصلی سایت                                     | در GitHub Pages به‌صورت خودکار تشخیص داده می‌شود   |
+| `BASE_PATH`             | پیشوند مسیر URL                                      | در GitHub Pages به‌صورت خودکار تشخیص داده می‌شود   |
 
 در توسعه محلی معمولاً نیازی به تنظیم هیچ‌کدام از این متغیرها ندارید.
 
@@ -37,4 +37,4 @@ GITHUB_REPOSITORY_URL=https://github.com/owner/repository
 
 ## استایل‌دهی
 
-تغییرات کوچک theme را در `src/styles/custom.css` انجام دهید. customization را سبک نگه دارید تا upgrade کردن Starlight در آینده ساده باقی بماند.
+تغییرات کوچک theme را در `src/styles/global.css` انجام دهید. customization را سبک نگه دارید تا upgrade کردن Starlight در آینده ساده باقی بماند.

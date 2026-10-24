@@ -31,7 +31,7 @@ easy-starlight-docs-starter/
 │   ├── content/
 │   │   └── docs/
 │   ├── styles/
-│   │   └── custom.css
+│   │   └── global.css
 │   ├── content.config.ts
 │   └── env.d.ts
 ├── public/

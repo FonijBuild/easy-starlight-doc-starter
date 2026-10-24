@@ -74,7 +74,7 @@ export default defineConfig({
         },
       },
 
-      customCss: ["./src/styles/custom.css"],
+      customCss: ["./src/styles/global.css"],
       // Override default component here
       components: {
         Footer: "./src/components/starlight/Footer.astro",
@@ -114,10 +114,4 @@ function getCustomDomain() {
   const value = readFileSync(cnamePath, "utf8").trim();
 
   return value || undefined;
-}
-
-function withBase(pathname) {
-  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
-
-  return base === "/" ? path : `${base}${path}`;
 }

@@ -33,7 +33,7 @@ easy-starlight-docs-starter/
 │   │       ├── ...
 │   │       └── fa/
 │   ├── styles/
-│   │   └── custom.css
+│   │   └── global.css
 │   ├── content.config.ts
 │   └── env.d.ts
 ├── public/
